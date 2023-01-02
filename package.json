@@ -1,0 +1,25 @@
+{
+  "name": "doctor_appointment",
+  "version": "1.0.0",
+  "description": "Boook your appointment with doctor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-optimizer/doctor_appointment.git"
+  },
+  "author": "Shubham Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr-optimizer/doctor_appointment/issues"
+  },
+  "homepage": "https://github.com/mr-optimizer/doctor_appointment#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.2"
+  }
+}
