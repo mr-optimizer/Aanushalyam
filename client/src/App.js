@@ -1,7 +1,9 @@
+import 'antd/dist/reset.css';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">hi
+    <div>hi
     </div>
   );
 }
