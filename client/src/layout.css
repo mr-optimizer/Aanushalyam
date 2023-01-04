@@ -1,0 +1,152 @@
+.wrapper {
+    padding: 2rem;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.logo {
+    color: white;
+    font-weight: bold;
+}
+
+.role {
+    color: white;
+    font-size: 14px;
+    margin-top: -20px;
+}
+
+.sidebar {
+    background-color: #005555;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 2px gray;
+    margin-right: 20px;
+    min-height: 100%;
+    /* width: 300px; */
+    padding: 1rem;
+}
+
+.collapsed-sidebar {
+    background-color: #005555;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 2px gray;
+    margin-right: 20px;
+    min-height: 100%;
+    /* width: 50px; */
+    padding: 1rem;
+}
+
+.layout {
+    display: flex;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 2px gray;
+    margin-bottom: 20px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-bar {
+    display: flex;
+    padding: 1rem;
+    gap: 0.8rem;
+    align-items: center;
+    /* margin-bottom: 10px; */
+}
+
+.body {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 2px gray;
+    height: 76vh;
+    width: 100%;
+    padding: 15px;
+    overflow-x: scroll !important;
+}
+
+
+
+.menu {
+    margin-top: 100px;
+    padding: 0 0.1rem;
+}
+
+.menu-item {
+    display: flex;
+    margin-top: 30px;
+    transition: all .2s;
+}
+
+.menu-item:hover {
+    display: flex;
+    margin-top: 30px;
+    color: white;
+    background-color: #013737;
+    padding: 5px 0px;
+    border-radius: 5px;
+}
+
+.menu-item a {
+    color: rgba(255, 255, 255, 0.727);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.menu-item i {
+    color: rgba(255, 255, 255, 0.716);
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+.active-menu-item {
+    color: white;
+    background-color: #013737;
+    padding: 5px 0px;
+    border-radius: 5px;
+}
+
+.header-action-icon {
+    font-size: 30px;
+    color: black !important;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.ant-scroll-number-only-unit {
+    padding-right: -10px !important;
+    padding-bottom: -10px !important;
+}
+
+@media screen and (max-width: 768px) {
+
+    .menu {
+        padding: 0 5px;
+    }
+
+    .collapsed-sidebar {
+        width: 0px;
+        padding: 0;
+        margin-right: 0px;
+    }
+
+    .sidebar {
+        padding: 0.5rem;
+        margin-right: 5px;
+    }
+
+}
