@@ -1,3 +1,4 @@
+import { Badge } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -92,10 +93,13 @@ const Layout = (props) => {
                 </div>
               );
             })}
-            <div className="menu-item" onClick={(()=>{
+            <div
+              className="menu-item"
+              onClick={() => {
                 localStorage.clear();
                 navigate("/login");
-            })}>
+              }}
+            >
               <i className="ri-logout-circle-line"></i>
               {!collapsed && <Link to="/login">Logout</Link>}
             </div>
@@ -115,7 +119,9 @@ const Layout = (props) => {
               ></i>
             )}
             <div className="header-bar">
-              <i className="ri-notification-3-line header-action-icon"></i>
+              <Badge count={user?.unseenNotifications.length}>
+                <i className="ri-notification-3-line header-action-icon"></i>
+              </Badge>
               <div>
                 <Link className="anchor">{user?.name}</Link>
               </div>

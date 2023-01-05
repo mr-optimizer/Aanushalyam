@@ -1,4 +1,5 @@
 const User = require("./../models/userModel");
+const Doctor = require("./../models/doctorModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -81,6 +82,36 @@ exports.getUserInfo = async (req, res) => {
     console.log(error);
     return res.status(500).send({
       message: "Something went wrong !!",
+      success: false,
+    });
+  }
+};
+
+exports.applyDoctorAccount = async (req, res) => {
+  try {
+    const newDoctor = new Doctor({ ...req.body });
+    await newDoctor.save();
+    const adminUser = await User.findOne({ isAdmin: true });
+    const unseenNotifications = adminUser.unseenNotifications;
+    unseenNotifications.push({
+      type: "new-doctor-request",
+      message: `${newDoctor.firstName} ${newDoctor.lastName} has applied for a doctor account`,
+      data: {
+        doctorId: newDoctor._id,
+        name: newDoctor.firstName + " " + newDoctor.lastName,
+      },
+      onClickPath: "/admin/doctors",
+    });
+    await User.findByIdAndUpdate(adminUser._id, {unseenNotifications});
+
+    res.status(200).send({
+      message: "Doctor account applied successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      message: "Error while applying Doctor account",
       success: false,
     });
   }

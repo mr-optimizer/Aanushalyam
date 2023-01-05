@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import PublicRouts from "./components/PublicRouts";
+import ApplyDoctor from "./pages/ApplyDoctor";
 function App() {
   const { loading } = useSelector((state) => state.alert);
   return (
@@ -32,6 +33,14 @@ function App() {
             <PublicRouts>
               <Register />
             </PublicRouts>
+          }
+        />
+        <Route
+          path="/apply-doctor"
+          element={
+            <ProtectedRoutes>
+              <ApplyDoctor />
+            </ProtectedRoutes>
           }
         />
         <Route
