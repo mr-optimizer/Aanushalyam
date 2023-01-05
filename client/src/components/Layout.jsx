@@ -58,12 +58,12 @@ const Layout = (props) => {
     },
     {
       name: "Users",
-      path: "/admin/userslist",
+      path: "/admin/user-list",
       icon: "ri-user-line",
     },
     {
       name: "Doctors",
-      path: "/admin/doctorslist",
+      path: "/admin/doctor-list",
       icon: "ri-user-star-line",
     },
     {
@@ -119,7 +119,12 @@ const Layout = (props) => {
               ></i>
             )}
             <div className="header-bar">
-              <Badge count={user?.unseenNotifications.length}>
+              <Badge
+                count={user?.unseenNotifications.length}
+                onClick={() => {
+                  navigate("/notifications");
+                }}
+              >
                 <i className="ri-notification-3-line header-action-icon"></i>
               </Badge>
               <div>

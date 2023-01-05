@@ -116,3 +116,43 @@ exports.applyDoctorAccount = async (req, res) => {
     });
   }
 };
+
+exports.markAllNotificationsAsSeen = async (req, res) => {
+  try {
+    const user = await User.findOne({_id: req.body.userId});
+    const unseenNotifications = user.unseenNotifications;
+    user.seenNotifications = [...user.seenNotifications, ...unseenNotifications];
+    user.unseenNotifications = [];
+    const updatedUser = await user.save();
+    res.status(200).send({
+      message: "All notifications marked as seen",
+      success: true,
+      updatedUser
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      message: "Error while marking notifications as seen",
+      success: false,
+    });
+  }
+};
+
+exports.deleteAllSeenNotifications = async (req, res) => {
+  try {
+    const user = await User.findOne({_id: req.body.userId});
+    user.seenNotifications = [];
+    const updatedUser = await user.save();
+    res.status(200).send({
+      message: "All seen notifications deleted",
+      success: true,
+      updatedUser
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      message: "Error while deleting seen notifications",
+      success: false,
+    });
+  }
+};

@@ -8,8 +8,10 @@ require("dotenv").config({ path: './config/.env' });
 connectDatabase();
 
 const userRouter = require('./routes/userRoutes');
+const adminRouter = require('./routes/adminRoutes');
 
 app.use("/api/user", userRouter);
+app.use("/api/admin", adminRouter);
 
 
 const PORT = process.env.PORT || 5000;

@@ -5,6 +5,9 @@
 .d-flex {
     display: flex;
 }
+.justify-content-end{
+    justify-content: flex-end;
+}
 
 .logo {
     color: white;
@@ -65,6 +68,12 @@
     gap: 0.8rem;
     align-items: center;
     /* margin-bottom: 10px; */
+}
+.notifications-card{
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 1px solid #005555;
 }
 
 .body {

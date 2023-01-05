@@ -40,7 +40,7 @@ const ProtectedRoutes = (props) => {
     if (!user) {
       getUser();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   if (localStorage.getItem("token")) {
     return props.children;
