@@ -6,13 +6,41 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DoctorForm from "../components/DoctorForm";
-import moment from "moment";
+// import moment from "moment";
 
 function ApplyDoctor() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const onFinish = async (values) => {
+    let sDate = new Date(values.timings[0].$d);
+    let eDate = new Date(values.timings[1].$d);
+    let sh = "";
+    let eh = "";
+    let sm = "";
+    let em = "";
+    if (sDate.getHours() < 10) {
+      sh = "0" + sDate.getHours();
+    } else {
+      sh = sDate.getHours();
+    }
+    if (sDate.getMinutes() < 10) {
+      sm = "0" + sDate.getMinutes();
+    } else {
+      sm = sDate.getMinutes();
+    }
+    if (eDate.getHours() < 10) {
+      eh = "0" + eDate.getHours();
+    } else {
+      eh = eDate.getHours();
+    }
+    if (eDate.getMinutes() < 10) {
+      em = "0" + eDate.getMinutes();
+    } else {
+      em = eDate.getMinutes();
+    }
+    let sTime = sh + ":" + sm;
+    let eTime = eh + ":" + em;
     try {
       dispatch(showLoading());
       const response = await axios.post(
@@ -20,10 +48,7 @@ function ApplyDoctor() {
         {
           ...values,
           userId: user._id,
-          timings: [
-            moment(values.timings[0]).format("HH:mm"),
-            moment(values.timings[1]).format("HH:mm"),
-          ],
+          timings: [sTime, eTime],
         },
         {
           headers: {
@@ -31,6 +56,8 @@ function ApplyDoctor() {
           },
         }
       );
+
+      // console.log(stime, etime);
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
@@ -40,7 +67,7 @@ function ApplyDoctor() {
       }
     } catch (error) {
       dispatch(hideLoading());
-      toast.error("Something went wrong");
+      toast.error("Error while updating profile");
     }
   };
 

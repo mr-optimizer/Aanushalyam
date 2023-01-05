@@ -32,23 +32,23 @@ const Layout = (props) => {
     },
   ];
 
-  //   const doctorMenu = [
-  //     {
-  //       name: "Home",
-  //       path: "/",
-  //       icon: "ri-home-line",
-  //     },
-  //     {
-  //       name: "Appointments",
-  //       path: "/doctor/appointments",
-  //       icon: "ri-file-list-line",
-  //     },
-  //     {
-  //       name: "Profile",
-  //       path: `/doctor/profile/${user?._id}`,
-  //       icon: "ri-user-line",
-  //     },
-  //   ];
+  const doctorMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "ri-home-line",
+    },
+    {
+      name: "Appointments",
+      path: "/doctor/appointments",
+      icon: "ri-file-list-line",
+    },
+    {
+      name: "Profile",
+      path: `/doctor/profile/${user?._id}`,
+      icon: "ri-user-line",
+    },
+  ];
 
   const adminMenu = [
     {
@@ -72,13 +72,19 @@ const Layout = (props) => {
       icon: "ri-user-line",
     },
   ];
-  const menuToBeRendered = user?.isAdmin ? adminMenu : userMenu;
+  const menuToBeRendered = user?.isAdmin
+    ? adminMenu
+    : user?.isDoctor
+    ? doctorMenu
+    : userMenu;
+  const role = user?.isAdmin ? "Admin" : user?.isDoctor ? "Doctor" : "User";
   return (
     <div className="wrapper">
       <div className="layout">
         <div className={`${collapsed ? "collapsed-sidebar" : "sidebar"}`}>
           <div className="sidebar-header">
             <h1>BD</h1>
+            <h1 className="role">{role}</h1>
           </div>
           <div className="menu">
             {menuToBeRendered.map((item, index) => {

@@ -1,20 +1,15 @@
 import { Button, Col, Form, Input, Row, TimePicker } from "antd";
-import moment from "moment";
+// import moment from "moment";
 import React from "react";
 
 function DoctorForm({ onFinish, initialValues }) {
+  if (initialValues) initialValues.timings = null;
   return (
     <Form
       layout="vertical"
       onFinish={onFinish}
       initialValues={{
         ...initialValues,
-        ...(initialValues && {
-          timings: [
-            moment(initialValues?.timings[0], "HH:mm"),
-            moment(initialValues?.timings[1], "HH:mm"),
-          ],
-        }),
       }}
     >
       <h1 className="card-title mt-3">Personal Information</h1>
@@ -105,9 +100,10 @@ function DoctorForm({ onFinish, initialValues }) {
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
-            required
+            // required
             label="Timings"
             name="timings"
+            // initialValue={initialValues?.timings}
             rules={[{ required: true }]}
           >
             <TimePicker.RangePicker format="HH:mm" />
