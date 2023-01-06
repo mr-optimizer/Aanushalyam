@@ -6,8 +6,7 @@ import { showLoading, hideLoading } from "../redux/alertSlice";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-// import DoctorForm from "../components/DoctorForm";
-import moment from "moment";
+// import moment from "moment";
 
 function BookAppointment() {
   const [isAvailable, setIsAvailable] = useState(false);
@@ -46,6 +45,8 @@ function BookAppointment() {
   const checkAvailability = async () => {
     try {
       dispatch(showLoading());
+      let currDate = new Date(date);
+      const fDate = currDate.getDate() + "-" + (currDate.getMonth() + 1) + "-" + currDate.getFullYear();
       let sDate = new Date(time.$d);
       let sh = "";
       let sm = "";
@@ -64,7 +65,7 @@ function BookAppointment() {
         "/api/user/check-booking-availability",
         {
           doctorId: params.id,
-          date: date,
+          date: fDate,
           time: fTime,
         },
         {
@@ -89,6 +90,8 @@ function BookAppointment() {
     setIsAvailable(false);
     try {
       dispatch(showLoading());
+      let currDate = new Date(date);
+      const fDate = currDate.getDate() + "-" + (currDate.getMonth() + 1) + "-" + currDate.getFullYear();
       let sDate = new Date(time.$d);
       let sh = "";
       let sm = "";
@@ -110,7 +113,7 @@ function BookAppointment() {
           userId: user._id,
           doctorInfo: doctor,
           userInfo: user,
-          date: date,
+          date: fDate,
           time: fTime,
         },
         {
@@ -169,7 +172,7 @@ function BookAppointment() {
                 <DatePicker
                   format="DD-MM-YYYY"
                   onChange={(value) => {
-                    setDate(moment(value).format("DD-MM-YYYY"));
+                    setDate(value);
                     setIsAvailable(false);
                   }}
                 />

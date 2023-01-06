@@ -179,8 +179,6 @@ exports.getAllApprovedDoctors = async (req, res) => {
 
 exports.checkBookingAvailability = async (req, res) => {
   try {
-    // let dateString = "17-09-2013 10:08",
-    // dateTimeParts = dateString.split(" "),
     let timeParts = req.body.time.split(":"),
       dateParts = req.body.date.split("-"),
       date;
@@ -201,12 +199,12 @@ exports.checkBookingAvailability = async (req, res) => {
     });
     if (appointments.length > 0) {
       return res.status(200).send({
-        message: "Appointments not available",
+        message: "Doctor not available",
         success: false,
       });
     } else {
       return res.status(200).send({
-        message: "Appointments available",
+        message: "Appointments available Please Book",
         success: true,
       });
     }
