@@ -3,16 +3,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Spin } from "antd";
 
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import PublicRouts from "./components/PublicRouts";
-import ApplyDoctor from "./pages/ApplyDoctor";
-import Notifications from "./pages/Notifications";
 import UserList from "./pages/admin/UserList";
+import ApplyDoctor from "./pages/ApplyDoctor";
 import DoctorsList from "./pages/admin/DoctorsList";
+import Notifications from "./pages/Notifications";
 import DoctorProfile from "./pages/doctor/DoctorProfile";
+import BookAppointment from "./pages/BookAppointment";
+import PublicRouts from "./components/PublicRouts";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import Appointments from "./pages/Appointments";
 
 function App() {
   const { loading } = useSelector((state) => state.alert);
@@ -78,6 +80,22 @@ function App() {
           element={
             <ProtectedRoutes>
               <DoctorProfile />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/book-appointment/:id"
+          element={
+            <ProtectedRoutes>
+              <BookAppointment />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/appointments"
+          element={
+            <ProtectedRoutes>
+              <Appointments />
             </ProtectedRoutes>
           }
         />

@@ -5,7 +5,8 @@
 .d-flex {
     display: flex;
 }
-.justify-content-end{
+
+.justify-content-end {
     justify-content: flex-end;
 }
 
@@ -69,7 +70,8 @@
     align-items: center;
     /* margin-bottom: 10px; */
 }
-.notifications-card{
+
+.notifications-card {
     padding: 1rem;
     margin-top: 1rem;
     border-radius: 5px;
@@ -139,6 +141,35 @@
 .ant-scroll-number-only-unit {
     padding-right: -10px !important;
     padding-bottom: -10px !important;
+}
+
+.card {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-height: 11rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 1rem;
+    padding: 3px;
+    border-bottom: 0.8px solid #005555;
+}
+.booking-card{
+   /* margin-top: 1rem; */
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   padding: 2rem;
+}
+.date-picker{
+    /* d-flex flex-column pt-2 mt-2 */
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding-top: 1rem;
 }
 
 @media screen and (max-width: 768px) {

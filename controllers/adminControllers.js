@@ -36,10 +36,7 @@ exports.changeDoctorStatus = async (req, res) => {
     const { doctorId, status } = req.body;
     const doctor = await Doctor.findByIdAndUpdate(doctorId, { status });
     const user = await User.findById(doctor.userId);
-    // console.log(user);
-    // console.log(doctor);
     const unseenNotifications = user.unseenNotifications;
-    // console.log(unseenNotifications);
     unseenNotifications.push({
       type: "new-doctor-request-changed",
       message: `Your doctor account has been ${status}`,
